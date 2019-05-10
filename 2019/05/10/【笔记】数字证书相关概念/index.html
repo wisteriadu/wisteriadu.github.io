@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="iOS,移动开发,紫藤架子">
+  <meta name="description" content="Yancey的个人博客">
+  
+  <title>紫藤架子</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<link rel="shortcut icon" href="/source/favicon.ico">
+</head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu"><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav">
+    <div class="nav-header" style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/avatar.jpg" ondragstart="return false;"></div>
+    <p>Yancey Du</p>
+    <div class="nav-link">
+        
+        <a href="http://www.swift51.com/swift4.0/chapter1/chapter1.html" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        
+        
+        
+        <a href="https://objccn.io/issues/" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off">
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class="no-result">无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2019/05/">五月 2019<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/笔记/">笔记<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/闲聊/">闲聊<span class="category-count">1</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)">
+  <h2>【笔记】数字证书相关概念</h2>
+    
+  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-09T20:51:27.000Z">
+          2019-05-09
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p>这几天粗浅地研究了一下苹果的证书机制，然后大概看了一下RSA签名算法的原理。感觉有了些理解，写下这第一篇博文总结一下。<br><a id="more"></a></p>
+<h1 id="先举个例子："><a href="#先举个例子：" class="headerlink" title="先举个例子："></a>先举个例子：</h1><p>【组织A】推荐【张三】到【公司B】任职，进行了如下步骤。</p>
+<ol>
+<li>【组织A】给【张三】写了一封【推荐信】。</li>
+<li>【组织A】将【推荐信】放在自制的【盒子A】里，并上了自制的【锁A】。<br> （这里假定同一组织的锁都是相同的，可以用同一把钥匙打开）</li>
+<li>【张三】带着【盒子A】来到【公司B】。</li>
+<li>【公司B】拿出【组织A】事先存在【公司B】的【钥匙A】，打开了锁，并取出推荐信。</li>
+<li>【公司B】对比【推荐信】所写的内容是否是【张三】。</li>
+<li>【张三】成功任职。</li>
+</ol>
+<p>上面的例子能够运转的前提是</p>
+<ul>
+<li>【公司B】信任【组织A】</li>
+<li>【公司B】要保存【组织A】的钥匙</li>
+</ul>
+<hr>
+<h1 id="例子升级版"><a href="#例子升级版" class="headerlink" title="例子升级版"></a>例子升级版</h1><p>后来，有很多组织都想往【公司B】推荐人员，而【公司B】也需要人才。但【公司B】要验证每个组织的资质，并保存每家组织的钥匙，这太麻烦了。于是，【公司B】找了一个权威的第三方机构【机构C】，要求这些组织去【机构C】进行认证。于是【组织A】做了如下事项：</p>
+<ol>
+<li>【组织A】将自己的资质信息以及自己的【钥匙A】打包发给【机构C】进行审核。</li>
+<li>【机构C】审核了【组织A】发来的东西，并确认【组织A】是正规组织，可以信任。</li>
+<li>【机构C】为【组织A】写了封信任书(书上标明了信任期限)，将之放到【盒子C】中，并上了【锁C】。</li>
+<li>【机构C】将资质信息、【钥匙A】、【盒子C】打包放在【箱子A】，发送给【组织A】。 </li>
+<li>【组织A】再向【公司B】推荐人员时，除了要带上旧流程中的【盒子A】以外，还要带上【箱子A】(箱子是没有上锁的)。</li>
+</ol>
+<p>【公司B】接到【组织D】推荐的【李四】时，进行如下流程：</p>
+<ol>
+<li>打开【箱子】，取出【盒子C】。</li>
+<li>用【机构C】事先保存在【公司B】的【钥匙C】打开【盒子C】。</li>
+<li>检查【盒子C】中的信任书是否在有效期，并检查【箱子】里的东西与信任书上写的是否一致。（如果不一致，说明有人动过箱子）</li>
+<li>从【箱子】中取出【钥匙A】。</li>
+<li>用【钥匙A】打开【盒子A】。</li>
+<li>对比【盒子A】中推荐信所写是否是【李四】。</li>
+<li>李四成功任职。</li>
+</ol>
+<p>实施了这种方式以后，【公司B】只需要保存【机构C】的钥匙，就能间接地验证被推荐人。</p>
+<p>然后【组织A】【公司B】【张三】【李四】都过上了幸福的生活。</p>
+<hr>
+<h1 id="例子与https映射"><a href="#例子与https映射" class="headerlink" title="例子与https映射"></a>例子与https映射</h1><p>下面将上述故事映射到本文要讲的内容上来。以https中服务端向客户端发送消息为例。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">【组织A】</td>
+<td>服务端</td>
+</tr>
+<tr>
+<td style="text-align:left">【公司B】</td>
+<td>客户端</td>
+</tr>
+<tr>
+<td style="text-align:left">【李四】</td>
+<td>消息数据</td>
+</tr>
+<tr>
+<td style="text-align:left">【推荐信】</td>
+<td>摘要</td>
+</tr>
+<tr>
+<td style="text-align:left">【盒子A】</td>
+<td>数字签名</td>
+</tr>
+<tr>
+<td style="text-align:left">【锁A】</td>
+<td>服务端私钥</td>
+</tr>
+<tr>
+<td style="text-align:left">【钥匙A】</td>
+<td>服务端公钥</td>
+</tr>
+<tr>
+<td style="text-align:left">【机构C】</td>
+<td>证书授权机构（CA机构）</td>
+</tr>
+<tr>
+<td style="text-align:left">【信任书】</td>
+<td>摘要</td>
+</tr>
+<tr>
+<td style="text-align:left">【盒子C】</td>
+<td>数字签名</td>
+</tr>
+<tr>
+<td style="text-align:left">【锁C】</td>
+<td>CA机构私钥（从证书链层面看，也叫：根证书）</td>
+</tr>
+<tr>
+<td style="text-align:left">【钥匙C】</td>
+<td>CA机构公钥</td>
+</tr>
+<tr>
+<td style="text-align:left">【箱子】</td>
+<td>数字证书</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="https流程"><a href="#https流程" class="headerlink" title="https流程"></a>https流程</h1><p>有了上面的内容，我们就可以简单地理解服务端的签名机制了。下面列出服务端给客户端发送数据的流程。在此之前需要作如下准备：</p>
+<ul>
+<li>服务端到CA机构申请【数字证书】。</li>
+<li>客户端保存了CA机构的公钥。</li>
+</ul>
+<p>数据发送流程如下：</p>
+<ol>
+<li>【服务端】准备好【消息数据】。</li>
+<li>【服务端】对【消息数据】进行签名。具体操作是：<ul>
+<li>执行：散列算法，输入：【消息数据】，输出：【数据摘要】。</li>
+<li>执行：签名算法，输入：【数据摘要】【公钥】，输出：【签名数据】。</li>
+</ul>
+</li>
+<li>【服务端】将【签名数据】附在【消息数据】后，并和【数字证书】一并下发给客户端。</li>
+<li>【客户端】收到数据后，验证【数字证书】。</li>
+<li>【客户端】验证【消息数据】。具体操作是：  <ul>
+<li>从数字证书中取出【服务端公钥】</li>
+<li>执行：签名验证算法，输入：【签名数据】【服务端公钥】，输出：【数据摘要1】</li>
+<li>执行：散列算法，输入：【消息数据】，输出：【数据摘要2】</li>
+<li>验证【数据摘要1】与【数据摘要2】是否一致。</li>
+</ul>
+</li>
+<li>使用【消息数据】。</li>
+</ol>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2019/05/07/【闲聊】开山篇/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#先举个例子："><span class="post-toc-number">1.</span> <span class="post-toc-text">先举个例子：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#例子升级版"><span class="post-toc-number">2.</span> <span class="post-toc-text">例子升级版</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#例子与https映射"><span class="post-toc-number">3.</span> <span class="post-toc-text">例子与https映射</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#https流程"><span class="post-toc-number">4.</span> <span class="post-toc-text">https流程</span></a></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p style="line-height: 45px">Copyright ©  2017  紫藤架子</p>
+<p style="line-height: 45px">Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> && Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>

@@ -118,105 +118,54 @@
 <div id="content-outer">
   <div id="content-inner">
     
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-10.png)">
+  <h2>【原理】iOS证书的那些事</h2>
+    
+  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-09T16:23:46.000Z">
+          2019-05-09
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p>本文对苹果的开发者后台的certificate、provisioning files等背后的原理进行简单阐述。<br><a id="more"></a></p>
+<p>#iOS app开发及上架流程<br>在开发iOS app之前，首先要在苹果后台配置一大堆东西后才能正常地使用真机进行调试以及将app发布到app store。其主要流程如下：</p>
+<ol>
+<li>在mac的钥匙串中发起证书请求。  </li>
+<li>在开发者后台对1.中的证书请求文件进行签名，生成开发者证书。</li>
+<li>在mac中安装2.生成的开发者证书。</li>
+<li>在开发者后台创建app id。</li>
+<li>在开发者后台添加设备。</li>
+<li>生成provisioning file。</li>
+<li>在xcode中安装5.中生成的provisioning file。</li>
+<li>开发，真机调试。</li>
+<li>上传app store，发布。</li>
+</ol>
+<p>下面逐一分析每一步中做的事。</p>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
 
 
-<div class="tags">
-  
-</div>
-
-<div id="recent-posts">
-  
-      <div class="recent-post-item lazy" style="background-color:#26A69A" data-original="/images/random/vateral-6.png">
-        <a class="recent-post-link" href="/2019/05/10/【笔记】数字证书相关概念/">
-        <div class="post-hover">
-          <!--title-->
-          <p class="post-title"><a href="/2019/05/10/【笔记】数字证书相关概念/">【笔记】数字证书相关概念</a></p>
-
-          <!--date-->
-          
-            <p class="post-time">Yancey Du &nbsp &nbsp 发布于:<time datetime="2019-05-09T20:51:27.000Z">
-              2019-05-09
-            </time>
-            </p>
-          
-
-          <!--tags-->
-
-          标签:
-            
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/签名/">签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证书/">证书</a></li></ul>
-            
-          <!--分类-->
-
-          分类:
-            
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a></li></ul>
-            
-
-          <!--excerpt-->
-          <div class="post-excerpt">
-            <p>
-              摘要：
-              
-                这几天粗浅地研究了一下苹果的证书机制，然后大概看了一下RSA签名算法的原理。感觉有了些理解，写下这第一篇博文总结一下。
-              
-            </p>
-          </div>
-          <div class="post-more"><a href="/2019/05/10/【笔记】数字证书相关概念/">全文阅读</a></div>
-        </div>
-        </a>
-      </div>
-  
-      <div class="recent-post-item lazy" style="background-color:#26A69A" data-original="/images/random/vateral-7.png">
-        <a class="recent-post-link" href="/2019/05/07/【闲聊】开山篇/">
-        <div class="post-hover">
-          <!--title-->
-          <p class="post-title"><a href="/2019/05/07/【闲聊】开山篇/">【闲聊】开山篇</a></p>
-
-          <!--date-->
-          
-            <p class="post-time">Yancey Du &nbsp &nbsp 发布于:<time datetime="2019-05-06T20:23:24.000Z">
-              2019-05-06
-            </time>
-            </p>
-          
-
-          <!--tags-->
-
-          标签:
-            
-            暂无标签
-            
-          <!--分类-->
-
-          分类:
-            
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/闲聊/">闲聊</a></li></ul>
-            
-
-          <!--excerpt-->
-          <div class="post-excerpt">
-            <p>
-              摘要：
-              
-                首次写博客，简单立志
-              
-            </p>
-          </div>
-          <div class="post-more"><a href="/2019/05/07/【闲聊】开山篇/">全文阅读</a></div>
-        </div>
-        </a>
-      </div>
-  
-  <nav class="paging">
-    <span class="page-number current">1</span>
+  <!-- Next Nav -->
+    
 </nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    
 </div>
-
-
-
-
-
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
   </div>
 </div>
 <div id="bottom-outer">
