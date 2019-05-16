@@ -79,7 +79,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="archive-link" href="/archives/2019/05/">五月 2019<span class="archive-count">2</span></a>
+        <a class="archive-link" href="/archives/2019/05/">五月 2019<span class="archive-count">3</span></a>
     </li>
 </ul>
 <!--categories-->
@@ -92,7 +92,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/笔记/">笔记<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/闲聊/">闲聊<span class="category-count">1</span></a>
+        <a class="category-link" href="/categories/原理/">原理<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/笔记/">笔记<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/闲聊/">闲聊<span class="category-count">1</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -119,31 +119,18 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-10.png)">
-  <h2>【原理】iOS证书的那些事</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
+  <h2>【笔记】Masonry及snapKit源码解读</h2>
     
-  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-09T16:23:46.000Z">
-          2019-05-09
+  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-12T11:03:33.000Z">
+          2019-05-12
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <p>本文对苹果的开发者后台的certificate、provisioning files等背后的原理进行简单阐述。<br><a id="more"></a></p>
-<p>#iOS app开发及上架流程<br>在开发iOS app之前，首先要在苹果后台配置一大堆东西后才能正常地使用真机进行调试以及将app发布到app store。其主要流程如下：</p>
-<ol>
-<li>在mac的钥匙串中发起证书请求。  </li>
-<li>在开发者后台对1.中的证书请求文件进行签名，生成开发者证书。</li>
-<li>在mac中安装2.生成的开发者证书。</li>
-<li>在开发者后台创建app id。</li>
-<li>在开发者后台添加设备。</li>
-<li>生成provisioning file。</li>
-<li>在xcode中安装5.中生成的provisioning file。</li>
-<li>开发，真机调试。</li>
-<li>上传app store，发布。</li>
-</ol>
-<p>下面逐一分析每一步中做的事。</p>
-
+  <p>详细看了一遍Masonry和snapKit的源码。记录一下它的实现及从中学习到的一些东西。<br><a id="more"></a></p>
+<h2 id="NS-ESCAPE"><a href="#NS-ESCAPE" class="headerlink" title="NS_ESCAPE"></a>NS_ESCAPE</h2>
   </div>
   <!--评论块-->
     
@@ -160,7 +147,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#NS-ESCAPE"><span class="post-toc-number">1.</span> <span class="post-toc-text">NS_ESCAPE</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

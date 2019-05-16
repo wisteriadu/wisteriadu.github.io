@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="iOS,移动开发,紫藤架子">
+  <meta name="description" content="Yancey的个人博客">
+  
+  <title>紫藤架子</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<link rel="shortcut icon" href="/source/favicon.ico">
+</head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu"><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav">
+    <div class="nav-header" style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/avatar.jpg" ondragstart="return false;"></div>
+    <p>Yancey Du</p>
+    <div class="nav-link">
+        
+        <a href="http://www.swift51.com/swift4.0/chapter1/chapter1.html" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        
+        
+        
+        <a href="https://objccn.io/issues/" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off">
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class="no-result">无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2019/05/">五月 2019<span class="archive-count">3</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/原理/">原理<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/笔记/">笔记<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/闲聊/">闲聊<span class="category-count">1</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
+  <h2>【原理】iOS证书的那些事</h2>
+    
+  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-09T16:23:46.000Z">
+          2019-05-09
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p>本文对苹果的开发者后台的certificate、provisioning profile等背后的原理进行简单阐述。<br><a id="more"></a></p>
+<p>#iOS app开发及上架流程<br>在开发iOS app之前，首先要在苹果后台配置一大堆东西后才能正常地使用真机进行调试以及将app发布到app store。其主要流程如下：</p>
+<ol>
+<li>在mac的钥匙串中搞到csr文件。  </li>
+<li>在开发者后台创建一个开发者证书(cer文件)，其间需要上传1.中得到的csr文件。</li>
+<li>在mac中安装2.生成的开发者证书。</li>
+<li>在开发者后台创建app id。</li>
+<li>在开发者后台添加设备。</li>
+<li>生成provisioning profile。</li>
+<li>在xcode中安装5.中生成的provisioning profile。</li>
+<li>开发，真机调试。</li>
+<li>上传app store，发布。</li>
+</ol>
+<h1 id="签名算法简介"><a href="#签名算法简介" class="headerlink" title="签名算法简介"></a>签名算法简介</h1><p>签名的运作包括以下几个部分</p>
+<ol>
+<li>对待签名的数据进行hash，取得数据摘要。</li>
+<li>使用签名专用的非对称加密算法对数据摘要进行加密。（使用私钥加密）</li>
+<li>将加密结果（签名）附在数据上一并传递出去。</li>
+<li>接收方使用公钥解密签名，得到数据摘要。</li>
+<li>接收方对数据进行hash，得到数据摘要。</li>
+<li>对比上面两步的摘要是否完成相同。如果不同，说明数据被篡改过。</li>
+</ol>
+<p>所以，签名过程主要包含两步</p>
+<ol>
+<li>对数据取hash</li>
+<li>使用私钥对hash进行非对称加密</li>
+</ol>
+<p>签名算法的核心在于：只要保证发送方的私钥安全，就无人能伪造。</p>
+<p>使用hash求取数据摘要的原因是，原数据可能很大，签名时用的非对称加密算法无法输入如此庞大的数据，或者加密速度太慢。</p>
+<p>hash算法，也叫散列算法，是一种单向算法，只能从数据得到摘要，无法从摘要导出数据，且不同的数据得出的hash是不同的（有可能相同，这种情况叫hash碰撞，极少出现，一般认为不会出现）。hashs算法速度快，且能极大地缩减数据量。这样就弥补了签名用的非对称加密算法的不足。</p>
+<p>值得注意的是，签名使用的非对称加密算法并不是使用任何非对称加密算法都可以。虽然两者看起来很像，但保证数据私密性的非对称加密算法是使用公私加密，通过私钥解密，它对解密用的钥匙安全等级要求高，而不关心加密用钥匙的安全等级。而签名中用到的非对称加密算法是使用私钥加密，使用公钥解密，它对加密用的钥匙安全等级要求高，而不关心解密用钥匙的安全等级。所以并不是说，使用任意一种非对称加密算法，单纯将私钥公布出去，将公钥保密就可以的。反过来，也不是任何一种签名用的非对称加密算法都能用于保证数据私密性。</p>
+<h1 id="app-store应用安装"><a href="#app-store应用安装" class="headerlink" title="app store应用安装"></a>app store应用安装</h1><p>苹果公司有这么一对签名密钥，私钥内部保存，公钥内置到所有iOS设备中。iOS设备在安装任何app时，都要验证这个app是不是苹果官方允许的。苹果在向app store上架app的时候，会使用私钥对app进行签名。iOS设备在从app store安装app时，然内置的公钥对app的签名信息进行验证。这样就保证了app都是苹果审核通过允许安装的app。</p>
+<h1 id="调试程序安装"><a href="#调试程序安装" class="headerlink" title="调试程序安装"></a>调试程序安装</h1><p>开发者调试程序时需要向手机上安装自己的程序，开发者显然不能把自己需要调试的程序打包找苹果去签名。于是，苹果就用证书链的方式，为开发者发放开发证书。开发者自己生成一对公私钥，苹果对开发者的信息和公钥进行签名，生成证书。开发者使用自己的私钥为app签名，然后带上自己的证书。iOS设备先使用苹果的公钥解密证书中的签名，验证开发者身份，再用证书中的公钥解密app的签名，验证app。这样就能保证该app是苹果信任的开发者进行安装的。</p>
+<p>在本文开关的流程中，第一部和第二步就是生成开发者证书的步骤。这两步主要做的事如下：</p>
+<ol>
+<li>在mac的钥匙串中搞到csr文件。<br>实际上是钥匙串工具为开发者生成了一对公私钥，私钥保存在mac中，公钥导出到csr文件。</li>
+<li>生成开发者证书。<br>苹果为开发者生成一个证书，将开发者的信息和开发者的公钥打包在一起，并计算这些信息签名，最终将开发者信息、开发者公钥、签名全部打包成cer文件。这个过程中上传的csr文件就是开发者公钥。</li>
+</ol>
+<p>附上一个证书样本<br><img src="./cer.jpg" width="100%"></p>
+<p>可以看到，证书主要有以下信息：</p>
+<ol>
+<li>证书持有者信息</li>
+<li>证书签发者信息</li>
+<li>证书使用的签名算法</li>
+<li>有效期</li>
+<li>证书持有者公钥</li>
+<li>数字签名</li>
+<li>扩展和指纹(暂时没搞懂是干嘛用的)</li>
+</ol>
+<p>另外插一句。Push notification也需要像添加开发者一样添加证书，其原理和添加开发者其实是一样的。只不过发送push notification的人的身份不是开发者，而是一另外一个身份，所以需要使用单独的私钥来签名。</p>
+<p>Provisioning profile是划定开发者权限范围用的。在真机调试之前，需要在开发者后台生成provisioning profile文件，后缀是mobileprovision。在生成这个文件时一般会经过选择app id、开发者、设备。苹果这些信息打包到provisioning profile中，并使用私钥签名。开发者下载该文件后，安装到xcode中，最终被打包到ipa包中(app的根目录下的embedded.mobileprovision文件)。真机在安装app时会检查app包内的embedded.mobileprovision文件信息，检查app包签名的证书以及当前设备是否在embedded.mobileprovision中有描述。只有验证通过后才能在真机上运行。它的大概样子如下图</p>
+<p><img src="./profile.jpg" width="100%"></p>
+<p>它包含了四部分</p>
+<ol>
+<li>应用基本信息</li>
+<li>权限信息</li>
+<li>开发者证书</li>
+<li>设备</li>
+</ol>
+<p>权限信息对应的是xcproject文件中capabilities中的内容，这些内容是需要在开发者后台开通的。<br>开发者证书中列出了可以签名本应用的开发者。<br>设备中列出了可以安装本应用的设备。发布以及In house的provisioning profile没有设备这一项，只有AdHoc和Development的才有。</p>
+<h1 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h1><p>附上查看app包查看签名信息的脚本</p>
+<ul>
+<li>查看app的签名(将ipa包改为zip解压后)<br><code>codesign -vv -d Example.app</code></li>
+<li>对app进行签名<br><code>codesign -s &#39;iPhone Developer: Thomas Kollbach (7TPNXN7G6K)&#39; Example.app</code></li>
+<li>验证app签名<br><code>codesign --verify Example.app</code></li>
+<li>查看app中的描述文件内容<br><code>codesign -d --entitlements - Example.app</code></li>
+<li>查看系统中可以对代码进行签名的证书<br><code>security find-identity -v -p codesigning</code></li>
+<li>查看mobileprovision文件内容<br><code>security cms -D -i embedded.mobileprovision</code></li>
+</ul>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+  <a href="/2019/05/10/【笔记】数字证书相关概念/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2019/05/07/【闲聊】开山篇/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#签名算法简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">签名算法简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#app-store应用安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">app store应用安装</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#调试程序安装"><span class="post-toc-number">3.</span> <span class="post-toc-text">调试程序安装</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#记录"><span class="post-toc-number">4.</span> <span class="post-toc-text">记录</span></a></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p style="line-height: 45px">Copyright ©  2017  紫藤架子</p>
+<p style="line-height: 45px">Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> && Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>
