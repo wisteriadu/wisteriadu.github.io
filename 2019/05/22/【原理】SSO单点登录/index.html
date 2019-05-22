@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="iOS,移动开发,紫藤架子">
+  <meta name="description" content="Yancey的个人博客">
+  
+  <title>紫藤架子</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<link rel="shortcut icon" href="/source/favicon.ico">
+</head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu"><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav">
+    <div class="nav-header" style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/avatar.jpg" ondragstart="return false;"></div>
+    <p>Yancey Du</p>
+    <div class="nav-link">
+        
+        <a href="http://www.swift51.com/swift4.0/chapter1/chapter1.html" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        
+        
+        
+        <a href="https://objccn.io/issues/" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off">
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class="no-result">无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2019/05/">五月 2019<span class="archive-count">4</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/原理/">原理<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/笔记/">笔记<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/闲聊/">闲聊<span class="category-count">1</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
+  <h2>【原理】SSO单点登录</h2>
+    
+  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-22T11:03:35.000Z">
+          2019-05-22
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p>简单学习了一下SSO的原理，这里记录一下。<br><a id="more"></a></p>
+<h1 id="SESSION"><a href="#SESSION" class="headerlink" title="SESSION"></a>SESSION</h1><p>Http协议是无状态的，每次的http请求都是独立的。但是很多时候用户的浏览行为是一个连续的过程，需要记录之前用户的状态。Session就是为了解决这个问题面出现的。其实现原理如下：</p>
+<ol>
+<li>客户端发起请求。</li>
+<li>服务端建立session，将会话上下文信息保存在session中，并将session的唯一标识session id种在cookie里。</li>
+<li>客户端再次发送请求，请求中会带上上一步中种下的cookie。</li>
+<li>服务端收到请求后取出cookie中的session id，找到对应的session，结合session中的数据返回结果。</li>
+</ol>
+<p>注：cookie必须设置在某个域名下。</p>
+<h1 id="简单登录"><a href="#简单登录" class="headerlink" title="简单登录"></a>简单登录</h1><p>session很大的一个应用场景是登录。有些数据必须在登录后才能返回给客户端。这种情况的流程如下：</p>
+<ol>
+<li>客户端请求数据。</li>
+<li>服务端判断客户端是否已登录。判断方法为指定的cookie中是否有session id，并且这个服务端保存有session id对应的session。</li>
+<li>服务端判定用户未登录，返回302给客户端，将客户端重定向到登录页面。参数中带上callback url。</li>
+<li>客户端将用户输入的用户名、密码提交到服务端。</li>
+<li>服务端验证登录信息。通过后建立session，并在cookie中种入session id，返回302给客户端，重定向到3.中callback url。</li>
+</ol>
+<p>以上步骤实现了简单系统下的登录。在一些复杂的系统中，有各种各样的子系统，虽然可以通过子域名的方式使用上面的方式完成登录验证。但在实际应用中限制比较大。所以就有了单点登录。</p>
+<p>注：  </p>
+<ul>
+<li>子域名方式：比如有一个域名叫 example.com，detail.example.com、user.example.com等就是其子域名。我们可以将不同的子系统配置到不同的子域名下，而将session id的cookie种在example.com下，这样就能在各个子系统中共享这个cookie。从而使用上面的方式进行登录验证。</li>
+</ul>
+<h1 id="SSO登录"><a href="#SSO登录" class="headerlink" title="SSO登录"></a>SSO登录</h1><p>在实际应用中，很多时候同一个系统会用到很多个域名，我们希望用户只登录一次就能访问整个系统。这就用到了单点登录，single sign on，简称SSO。它设立一个单独用于管理登录的服务CAS(Central Authentication service)。其他的系统需要验证用户的登录信息时，都通过CAS来验证。具体流程如下：</p>
+<ol>
+<li>客户端访问a.com。</li>
+<li><p>a.com检验客户端是否登录。检验方法是：检查请求的cookie中是否能取到session id，并且a.com中存在session id对应的session。</p>
+<p> 注：这里的cookie只能是种在a.com域名下的。</p>
+</li>
+<li><p>a.com发现客户端未登录，返回302，将客户端重定向到cas.com，并在参数中带上callback url。</p>
+</li>
+<li>客户端请求cas.com。</li>
+<li><p>cas.com检验用户是否登录。检验方法是cookie中存在TGC(ticket granted cookie)，且其中的TGT(ticket granted ticket)在cas.com有session与之对应。</p>
+<p> 注：TGC就是一个cookie，只是在这里有专用名词。<br> TGT就是上文的session id，也是个专用名词。</p>
+</li>
+<li><p>cas.com发现用户未登录，返回登录页面给客户端。</p>
+</li>
+<li>客户端提交用户名和密码。</li>
+<li><p>cas.com验证用户名和密码。通过后创建全局session。将在cookie中加入TGC，在其中种下TGT。</p>
+<p> 注：TGC是在cas.com域名下，a.com等其他域名无法访问。</p>
+</li>
+<li><p>cas.com返回302给客户端，地址为3.中的callback url，并在参数中加入ST(service ticket)。</p>
+</li>
+<li>客户端请求callback url，附带ST。</li>
+<li>a.com收到请求后，取出ST，到cas.com验证ST的有效性。</li>
+<li>cas.com验证ST的有效性后，返回有效给a.com。</li>
+<li><p>a.com创建session，并在cookie中种下session id。</p>
+<p>注：这里的session是在a.com服务端。cookie也是在a.com的域名下，其他域名无法访问。</p>
+</li>
+<li><p>a.com返回302给客户端，重定向到客户端最初访问的页面(1.中请求的页面)。</p>
+</li>
+<li>客户端重新发起页面请求，并带上13.中种下的cookie。</li>
+<li>a.com收到请求，验证登录状态，返回数据。验证方法同2.。</li>
+</ol>
+<p>经过上述过程，cas.com和a.com各自为客户端建立了一个session。并都在各自的域名下种下cookie。此时，客户端需要访问b.com的内容。流程如下：</p>
+<ol>
+<li>客户端请求b.com。</li>
+<li>b.com验证客户端登录状态为未登录。(验证方法同样是检查cookie中是否有session id，且b.com中有session id对应的session)。</li>
+<li>b.com返回302给客户端，地址为cas.com，并在参数中带上callback url b。</li>
+<li>客户端请求cas.com，带着参数callback url b，以及已经种下的TGC。</li>
+<li>cas.com取出TGC中的TGT，并找到了对应的session。确认用户已经登录。直接返回302给客户端，地址为callback url b，并在参数中带上ST。</li>
+<li>客户端请求b.com，带着参数ST。</li>
+<li>b.com收到请求，取出ST，并到cas.com验证ST的有效性。</li>
+<li>cas.com验证ST的有效性后，返回有效给b.com。</li>
+<li>b.com创建session，并在cookie中种下session id。返回302给客户端，地址为1.中客户端最初请求的地址。</li>
+<li>客户端重新向b.com发起请求，并带上9.中种下的cookie。</li>
+<li>b.com验证客户端登录状态，并返回数据给客户端。</li>
+</ol>
+<p>上面这一整个流程，经过了3次重定向。最终客户端在无用户参与的情况下展示出了b.com的数据。这就是所谓的单点登录。客户端在访问a.com时，用户填写了一次用户名和密码。用户在访问b.com时，无需再次输入用户名和密码，通过SSO直接在b.com上登录成功。</p>
+<h1 id="单点登出"><a href="#单点登出" class="headerlink" title="单点登出"></a>单点登出</h1><p>上面的流程实现了单点登录，既然单点登录，那就要实现单点登出，即用户在某一个子系统中退出登录，则整个系统的登录状态都要失效。我看网上给出的方案大概有如下两种。</p>
+<h2 id="CAS记录"><a href="#CAS记录" class="headerlink" title="CAS记录"></a>CAS记录</h2><p>在a.com和b.com到cas.com验证ST有效性时，同时传递一个地址过去，cas.com将拿到的地址保存在一个表中。客户端在a.com登出以后，a.com通知cas.com(这一步要带上ST，以便cas.com验证a.com是可信的)。cas.com销毁全局session后，将表中保存的地址一一取出并调用，告知各个子系统用户已退出登录。子系统收到通知后，销毁各自的session。</p>
+<h2 id="子系统每次验证"><a href="#子系统每次验证" class="headerlink" title="子系统每次验证"></a>子系统每次验证</h2><p>这个方案cas.com不负责通知子系统客户端退出登录的事件。而是子系统每次收到请求时，都到cas.com验证ticket的有效性。当a.com退出登录后，a.com销毁自己的session，然后通知cas.com。cas.com销毁session，b.com再次收到请求后，到cas.com验证ticket有效性时会拿到ticket已失效。然后b.com销毁自己的session。</p>
+<p>个人感觉方案1是比较好的实现方案。方案2每次请求都要验证ticket有效性，对cas.com的压力有点大。</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>附上网上扒的流程图，很具体<br><img src="./sso.png" width="100"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/ywlaker/p/6113927.html" target="_blank" rel="noopener">单点登录原理与简单实现</a><br><a href="https://blog.csdn.net/tzhennan/article/details/84920634" target="_blank" rel="noopener">SSO单点登录/登出</a><br><a href="https://juejin.im/post/5a002b536fb9a045132a1727" target="_blank" rel="noopener">前端需要了解的 SSO 与 CAS 知识</a><br><a href="https://apereo.github.io/cas/4.2.x/index.html" target="_blank" rel="noopener">CAS官方</a></p>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2019/05/17/【原理】iOS证书的那些事/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SESSION"><span class="post-toc-number">1.</span> <span class="post-toc-text">SESSION</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简单登录"><span class="post-toc-number">2.</span> <span class="post-toc-text">简单登录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SSO登录"><span class="post-toc-number">3.</span> <span class="post-toc-text">SSO登录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#单点登出"><span class="post-toc-number">4.</span> <span class="post-toc-text">单点登出</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CAS记录"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">CAS记录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#子系统每次验证"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">子系统每次验证</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#附录"><span class="post-toc-number">5.</span> <span class="post-toc-text">附录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考</span></a></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p style="line-height: 45px">Copyright ©  2017  紫藤架子</p>
+<p style="line-height: 45px">Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> && Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>
