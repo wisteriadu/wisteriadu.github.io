@@ -119,22 +119,22 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)">
-  <h2>【闲聊】开山篇</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)">
+  <h2>【坑】Android与iOS中的URLEncode</h2>
     
-  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-06T20:23:24.000Z">
-          2019-05-06
+  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-30T10:47:35.000Z">
+          2019-05-30
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <p>首次写博客，简单立志<br><a id="more"></a><br>参加工作已经将近四年了。一直想开个博客经常记录些遇到的问题、学习的新知识，但一直没动手。</p>
-<p>还记得2015年3、4月份时候，硕士论文基本定稿后，独自跑来北京找工作，参加各种面试。最终在本科同学的引荐下加入了iOS开发的阵营。当时完全没有接触过iOS开发，在实习的一个月里，从零学习Objective C这门语言。第一次见到方法调用不是用”.”号，而是用”[]”号，字符串要加”@”号，真的是云里雾里。2015年7月7号正式入职那天，上午办理入职手续，下午还要参加培训。结果中午就被小师父拉着，说给我分了两个需求。。。从此就踏上了iOS开发的道路。</p>
-<p>在第一家公司干了将近两年，主要任务是学习，做一些不是很复杂的需求。负责维护过push、hybrid、统一跳转、IM等模块。</p>
-<p>2017年6月5号进入了人生中的第二家公司，独立承担一个全新app的设计、研发、上架、维护和版本迭代。其间踩过无数坑，被系统的问题坑过，被自己设计的不合理架构恶心到过，被审核团队连续拒绝过。到去年年底，app已经上线运行了大半年，经历了五六个版本的迭代。是时候对自己的iOS之路做些总结了。故此开通了这个博客。</p>
-<p>后续会不断更新在这四年中的学习心得、工作经验等。希望自己能一直坚持下去，让自己的技术不断进步，成为一个小牛。</p>
-
+  <p>Java中的URLEncode会把空格转换为”+”，Android中的Uri.encode方法会将空格转为%20。</p>
+<a id="more"></a>
+<p>今天项目中发现android设置的一个值，iOS查回来后，本应是空格的位置变成了加号。</p>
+<p>最终找到原因是，URL Encode与URI Encode的方式有差别。Java中的URLEncode方法会把空格转换为”+”，Android中的Uri.encode方法会将空格转为%20。</p>
+<p>附上iOS端URL encode与decode实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">extension String &#123;</span><br><span class="line">  /// url encode</span><br><span class="line">  var urlEncode: String? &#123;</span><br><span class="line">  let allowed = CharacterSet.alphanumerics</span><br><span class="line">  return self.addingPercentEncoding(withAllowedCharacters: allowed)</span><br><span class="line">  &#125;</span><br><span class="line">  /// url decode</span><br><span class="line">  var urlDecode: String? &#123;</span><br><span class="line">    return self.removingPercentEncoding</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   </div>
   <!--评论块-->
     
@@ -143,13 +143,13 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2019/05/11/【笔记】数字证书相关概念/" id="post_nav-newer" class="post-nav-content prev-content">
-      新篇
-  </a>
-    
 
 
   <!-- Next Nav -->
+    
+  <a href="/2019/05/22/【原理】SSO单点登录/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
     
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>

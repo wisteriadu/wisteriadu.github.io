@@ -119,21 +119,18 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)">
-  <h2>【闲聊】开山篇</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
+  <h2>【设计模式】建造者</h2>
     
-  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-06T20:23:24.000Z">
-          2019-05-06
+  <p>作者:Yancey Du &nbsp&nbsp 发布于:<time datetime="2019-05-27T13:41:41.000Z">
+          2019-05-27
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <p>首次写博客，简单立志<br><a id="more"></a><br>参加工作已经将近四年了。一直想开个博客经常记录些遇到的问题、学习的新知识，但一直没动手。</p>
-<p>还记得2015年3、4月份时候，硕士论文基本定稿后，独自跑来北京找工作，参加各种面试。最终在本科同学的引荐下加入了iOS开发的阵营。当时完全没有接触过iOS开发，在实习的一个月里，从零学习Objective C这门语言。第一次见到方法调用不是用”.”号，而是用”[]”号，字符串要加”@”号，真的是云里雾里。2015年7月7号正式入职那天，上午办理入职手续，下午还要参加培训。结果中午就被小师父拉着，说给我分了两个需求。。。从此就踏上了iOS开发的道路。</p>
-<p>在第一家公司干了将近两年，主要任务是学习，做一些不是很复杂的需求。负责维护过push、hybrid、统一跳转、IM等模块。</p>
-<p>2017年6月5号进入了人生中的第二家公司，独立承担一个全新app的设计、研发、上架、维护和版本迭代。其间踩过无数坑，被系统的问题坑过，被自己设计的不合理架构恶心到过，被审核团队连续拒绝过。到去年年底，app已经上线运行了大半年，经历了五六个版本的迭代。是时候对自己的iOS之路做些总结了。故此开通了这个博客。</p>
-<p>后续会不断更新在这四年中的学习心得、工作经验等。希望自己能一直坚持下去，让自己的技术不断进步，成为一个小牛。</p>
+  <p>学习了一下设计模式中的建造者，进行了一下总结，并举出了些完整的例子。<br><a id="more"></a><br>有段时间做了些android的需求，发现里面的很多类都带一个内部类，叫Builder。这些类在初始化的时候，都是调用其内部的Builder类，一个参数一个参数地设置，最后调用一下build方法，就得到了想要的类的对象。一眼见到，就知道这肯定是builder设计模式。开始以为原来builder模式这么简单，但后来看了builder的详细介绍，才发现并非如此。</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><p>#总结</p>
 
   </div>
   <!--评论块-->
@@ -143,10 +140,6 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2019/05/11/【笔记】数字证书相关概念/" id="post_nav-newer" class="post-nav-content prev-content">
-      新篇
-  </a>
-    
 
 
   <!-- Next Nav -->
@@ -155,7 +148,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用场景"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用场景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#举例"><span class="post-toc-number">3.</span> <span class="post-toc-text">举例</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
