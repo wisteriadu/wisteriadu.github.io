@@ -2,6 +2,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
@@ -9,7 +18,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -37,38 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -76,34 +66,20 @@
 
 
 
-
-
-
-<meta name="keywords" content="iOS 移动开发 swift Objective-C">
-<meta property="og:type" content="website">
-<meta property="og:title" content="紫藤架子">
-<meta property="og:url" content="http://wisteriadu.github.io/index.html">
-<meta property="og:site_name" content="紫藤架子">
-<meta property="og:locale" content="zh-CN">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="紫藤架子">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -115,12 +91,35 @@
 </script>
 
 
+  
 
+
+
+
+  <meta name="keywords" content="iOS 移动开发 swift Objective-C">
+<meta property="og:type" content="website">
+<meta property="og:title" content="紫藤架子">
+<meta property="og:url" content="http://wisteriadu.github.io/index.html">
+<meta property="og:site_name" content="紫藤架子">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="紫藤架子">
+
+
+
+
+
+  
+  
   <link rel="canonical" href="http://wisteriadu.github.io/">
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>紫藤架子</title>
   
@@ -131,6 +130,35 @@
 
 
 
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
@@ -147,7 +175,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -157,13 +185,16 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">欢迎来到紫藤架子</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -171,35 +202,89 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -207,12 +292,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -223,6 +316,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -249,31 +344,46 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/05/【笔记】设计模式总结/" itemprop="url">【笔记】设计模式总结</a></h1>
+                
+                <a href="/2019/06/05/【笔记】设计模式总结/" class="post-title-link" itemprop="url">【笔记】设计模式总结</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-05T09:59:44Z">
-                2019-06-05
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-05 09:59:44 / 修改时间：09:44:46" itemprop="dateCreated datePublished" datetime="2019-06-05T09:59:44Z">2019-06-05</time>
             
 
             
+              
 
+              
             
           </span>
 
           
 
           
+            
             
           
 
@@ -302,21 +412,29 @@
         
           <p>最近看了一遍《Objective-C编程之道》这本书，结合《大话设计模式》以及网上的一些资料，对设计模式有了一个系统的认识。特摘录了原始的设计模式定义、iOS中设计模式的应用以及以前项目中运用到的地方。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/05/【笔记】设计模式总结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/05/【笔记】设计模式总结/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -349,6 +467,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -373,25 +493,51 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/30/【坑】Android与iOS中的URLEncode/" itemprop="url">【坑】Android与iOS中的URLEncode</a></h1>
+                
+                <a href="/2019/05/30/【坑】Android与iOS中的URLEncode/" class="post-title-link" itemprop="url">【坑】Android与iOS中的URLEncode</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-30T10:47:35Z">
-                2019-05-30
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-30 10:47:35" itemprop="dateCreated datePublished" datetime="2019-05-30T10:47:35Z">2019-05-30</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-05 08:12:06" itemprop="dateModified" datetime="2019-06-05T08:12:06Z">2019-06-05</time>
+              
             
           </span>
 
@@ -404,14 +550,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/【坑】/" itemprop="url" rel="index">
-                    <span itemprop="name">【坑】</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/坑/" itemprop="url" rel="index"><span itemprop="name">坑</span></a></span>
 
                 
                 
@@ -420,6 +562,7 @@
           
 
           
+            
             
           
 
@@ -448,21 +591,29 @@
         
           <p>Java中的URLEncode会把空格转换为”+”，Android中的Uri.encode方法会将空格转为”%20”。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/30/【坑】Android与iOS中的URLEncode/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/30/【坑】Android与iOS中的URLEncode/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -493,6 +644,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -519,25 +672,51 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/22/【原理】SSO单点登录/" itemprop="url">【原理】SSO单点登录</a></h1>
+                
+                <a href="/2019/05/22/【原理】SSO单点登录/" class="post-title-link" itemprop="url">【原理】SSO单点登录</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-22T11:03:35Z">
-                2019-05-22
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-22 11:03:35" itemprop="dateCreated datePublished" datetime="2019-05-22T11:03:35Z">2019-05-22</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-05 09:29:46" itemprop="dateModified" datetime="2019-06-05T09:29:46Z">2019-06-05</time>
+              
             
           </span>
 
@@ -550,14 +729,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/原理/" itemprop="url" rel="index">
-                    <span itemprop="name">原理</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/原理/" itemprop="url" rel="index"><span itemprop="name">原理</span></a></span>
 
                 
                 
@@ -566,6 +741,7 @@
           
 
           
+            
             
           
 
@@ -592,23 +768,31 @@
 
       
         
-          <p>简单学习了一下SSO的原理，这里记录一下。<br>
+          <p>简单学习了一下SSO的原理，这里记录一下。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/22/【原理】SSO单点登录/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/22/【原理】SSO单点登录/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -639,6 +823,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -665,25 +851,39 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/17/【原理】iOS证书的那些事/" itemprop="url">【原理】iOS证书的那些事</a></h1>
+                
+                <a href="/2019/05/17/【原理】iOS证书的那些事/" class="post-title-link" itemprop="url">【原理】iOS证书的那些事</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-16T20:16:00Z">
-                2019-05-16
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-16 20:16:00 / 修改时间：12:22:58" itemprop="dateCreated datePublished" datetime="2019-05-16T20:16:00Z">2019-05-16</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -696,14 +896,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/原理/" itemprop="url" rel="index">
-                    <span itemprop="name">原理</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/原理/" itemprop="url" rel="index"><span itemprop="name">原理</span></a></span>
 
                 
                 
@@ -712,6 +908,7 @@
           
 
           
+            
             
           
 
@@ -738,23 +935,31 @@
 
       
         
-          <p>本文对苹果的开发者后台的certificate、provisioning profile等背后的原理进行简单阐述。<br>
+          <p>本文对苹果的开发者后台的certificate、provisioning profile等背后的原理进行简单阐述。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/17/【原理】iOS证书的那些事/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/17/【原理】iOS证书的那些事/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -785,6 +990,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -811,25 +1018,51 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/11/【笔记】数字证书相关概念/" itemprop="url">【笔记】数字证书相关概念</a></h1>
+                
+                <a href="/2019/05/11/【笔记】数字证书相关概念/" class="post-title-link" itemprop="url">【笔记】数字证书相关概念</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-10T20:51:27Z">
-                2019-05-10
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-10 20:51:27" itemprop="dateCreated datePublished" datetime="2019-05-10T20:51:27Z">2019-05-10</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-22 06:17:27" itemprop="dateModified" datetime="2019-05-22T06:17:27Z">2019-05-22</time>
+              
             
           </span>
 
@@ -842,14 +1075,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
 
                 
                 
@@ -858,6 +1087,7 @@
           
 
           
+            
             
           
 
@@ -884,23 +1114,31 @@
 
       
         
-          <p>这几天粗浅地研究了一下苹果的证书机制，然后大概看了一下RSA签名算法的原理。感觉有了些理解，写下这第一篇博文总结一下。<br>
+          <p>这几天粗浅地研究了一下苹果的证书机制，然后大概看了一下RSA签名算法的原理。感觉有了些理解，写下这第一篇博文总结一下。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/11/【笔记】数字证书相关概念/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/11/【笔记】数字证书相关概念/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -933,6 +1171,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -957,25 +1197,51 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/07/【闲聊】开山篇/" itemprop="url">【闲聊】开山篇</a></h1>
+                
+                <a href="/2019/05/07/【闲聊】开山篇/" class="post-title-link" itemprop="url">【闲聊】开山篇</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-06T20:23:24Z">
-                2019-05-06
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-06 20:23:24" itemprop="dateCreated datePublished" datetime="2019-05-06T20:23:24Z">2019-05-06</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-09 08:22:48" itemprop="dateModified" datetime="2019-05-09T08:22:48Z">2019-05-09</time>
+              
             
           </span>
 
@@ -988,14 +1254,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/闲聊/" itemprop="url" rel="index">
-                    <span itemprop="name">闲聊</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/闲聊/" itemprop="url" rel="index"><span itemprop="name">闲聊</span></a></span>
 
                 
                 
@@ -1004,6 +1266,7 @@
           
 
           
+            
             
           
 
@@ -1030,23 +1293,31 @@
 
       
         
-          <p>首次写博客，简单立志<br>
+          <p>首次写博客，简单立志</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/07/【闲聊】开山篇/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/07/【闲聊】开山篇/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1079,9 +1350,6 @@
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -1095,72 +1363,109 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Yancey Du</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
+          
+            <nav class="site-state motion-element">
               
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
+                <div class="site-state-item site-state-posts">
                 
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">categories</span>
+                  <a href="/archives/">
                 
-              </div>
-            
-
-            
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
               
+
               
-              <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">tags</span>
                 
-              </div>
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
             
-
-          </nav>
-
           
-
-          
-
-          
-          
-
-          
-          
-
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -1168,6 +1473,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -1177,16 +1483,18 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Yancey Du</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
 
 
 
@@ -1194,12 +1502,13 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
 
 
 
 
         
+
 
 
 
@@ -1220,11 +1529,14 @@
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1238,92 +1550,11 @@
 
 
 
-  
 
 
 
 
 
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -1337,7 +1568,51 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
 
 
 
@@ -1349,6 +1624,19 @@
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
   
 
   
